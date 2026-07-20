@@ -16,8 +16,9 @@ public class AuthService {
     private final PasswordEncoder passwordEncoder;
 
     public User register(RegisterRequest request) {
+
         if (userRepository.findByEmail(request.getEmail()).isPresent()) {
-            throw new RuntimeException("Email is already registered");
+            throw new RuntimeException("Email already exists, please use another email");
         }
 
         User user = new User();
