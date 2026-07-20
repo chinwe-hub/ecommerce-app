@@ -1,5 +1,7 @@
 package com.example.ecommerce.controller;
 
+import com.example.ecommerce.dto.JwtResponse;
+import com.example.ecommerce.dto.LoginRequest;
 import com.example.ecommerce.dto.RegisterRequest;
 import com.example.ecommerce.model.User;
 import com.example.ecommerce.service.AuthService;
@@ -16,5 +18,10 @@ public class AuthController {
     @PostMapping("/register")
     public User register(@RequestBody RegisterRequest request) {
         return authService.register(request);
+    }
+
+    @PostMapping("/login")
+    public JwtResponse login (@RequestBody LoginRequest request) {
+        return authService.login(request);
     }
 }
