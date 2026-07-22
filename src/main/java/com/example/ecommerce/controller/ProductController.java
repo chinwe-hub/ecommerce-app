@@ -23,7 +23,7 @@ public class ProductController {
     @GetMapping("/{id}")
     public Optional<Product> getOneProduct(@PathVariable Long id) {
         return productService.getOneProduct(id);
-    }
+   }
 
     @PostMapping
     public Product createProduct(@RequestBody Product product) {
