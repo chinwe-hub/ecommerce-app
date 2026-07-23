@@ -27,6 +27,7 @@ public class AuthController {
         return authService.login(request);
     }
 
+    // Test
     @GetMapping("/me")
     public String getCurrentUser(@AuthenticationPrincipal UserPrincipal principal) {
         return "You are logged in as: " + principal.getUsername() + " (" + principal.getUser().getRole() + ")";
