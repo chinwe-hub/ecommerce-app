@@ -18,7 +18,7 @@ This README reflects what currently works, and what is still planned.
 - [x] Registration endpoint (`POST /api/auth/register`)
 - [x] Login endpoint returns a JWT (`POST /api/auth/login`)
 - [x] JWT validation filter — protected endpoints require a valid token
-- [ ] Role-based access (admin-only endpoints)
+- [x] Role-based access (admin-only endpoints)
 - [ ] Cart entity + add/update/remove items
 - [ ] Order entity + checkout flow
 - [ ] React frontend
