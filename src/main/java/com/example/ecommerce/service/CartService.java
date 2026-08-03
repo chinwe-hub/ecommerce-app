@@ -81,4 +81,10 @@ public class CartService {
 
         return getCartForUser(userId);
     }
+
+    public void clearCart(Long userId) {
+        Cart cart = getCartForUser(userId);
+        cart.getItems().clear();
+        cartRepository.save(cart);
+    }
 }
