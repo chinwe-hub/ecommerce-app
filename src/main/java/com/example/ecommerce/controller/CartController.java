@@ -27,12 +27,12 @@ public class CartController {
         return cartService.addItemToCart(principal.getUser().getId(), request);
     }
 
-    @PutMapping("/items/itemId")
+    @PutMapping("/items/{itemId}")
     public Cart updateItem(@AuthenticationPrincipal UserPrincipal principal, @PathVariable Long itemId, @RequestParam Integer quantity){
         return  cartService.updateItemQuantity(principal.getUser().getId(), itemId, quantity);
     }
 
-    @DeleteMapping("/items/itemId")
+    @DeleteMapping("/items/{itemId}")
     public Cart removeItem(@AuthenticationPrincipal UserPrincipal principal, @PathVariable Long itemId){
         return  cartService.removeItem(principal.getUser().getId(), itemId);
     }
