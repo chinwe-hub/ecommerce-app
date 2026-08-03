@@ -1,4 +1,9 @@
 package com.example.ecommerce.model;
 
-public class OrderStatus {
+public enum OrderStatus {
+    PENDING,
+    CONFIRMED,
+    SHIPPED,
+    DELIVERED,
+    CANCELLED
 }
