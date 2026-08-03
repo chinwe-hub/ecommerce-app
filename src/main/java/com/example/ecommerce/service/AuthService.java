@@ -3,8 +3,10 @@ package com.example.ecommerce.service;
 import com.example.ecommerce.dto.JwtResponse;
 import com.example.ecommerce.dto.LoginRequest;
 import com.example.ecommerce.dto.RegisterRequest;
+import com.example.ecommerce.model.Cart;
 import com.example.ecommerce.model.Role;
 import com.example.ecommerce.model.User;
+import com.example.ecommerce.repository.CartRepository;
 import com.example.ecommerce.repository.UserRepository;
 import com.example.ecommerce.security.JwtUtil;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +19,7 @@ public class AuthService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final CartRepository cartRepository;
     private final JwtUtil jwtUtil;
 
     public User register(RegisterRequest request) {
@@ -30,8 +33,13 @@ public class AuthService {
         user.setEmail(request.getEmail());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setRole(Role.CUSTOMER);
+        user = userRepository.save(user);
 
-        return userRepository.save(user);
+        Cart cart = new Cart();
+        cart.setUser(user);
+        cartRepository.save(cart);
+
+        return user;
     }
 
     public JwtResponse login(LoginRequest request) {
