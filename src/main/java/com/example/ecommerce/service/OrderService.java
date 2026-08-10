@@ -64,4 +64,21 @@ public class OrderService {
     public List<Order> getOrdersForUser(Long userId) {
         return orderRepository.findByUserIdOrderByOrderDateDesc(userId);
     }
+
+    public List<Order> getAllOrders() {
+        return orderRepository.findAll();
+    }
+
+    public Order updateOrderStatus(Long orderId, String status) {
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(() -> new RuntimeException("Order not found"));
+
+        try {
+            order.setStatus(OrderStatus.valueOf(status.toUpperCase()));
+        } catch (IllegalArgumentException e) {
+            throw new RuntimeException("Invalid status: " + status);
+        }
+
+        return orderRepository.save(order);
+    }
 }

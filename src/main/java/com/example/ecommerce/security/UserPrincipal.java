@@ -1,6 +1,7 @@
 package com.example.ecommerce.security;
 
 import com.example.ecommerce.model.User;
+import jakarta.persistence.Id;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -46,4 +47,8 @@ public class UserPrincipal implements UserDetails {
 
     @Override
     public boolean isEnabled() { return true; }
+
+    public Long getId() {
+        return user.getId();
+    }
 }
