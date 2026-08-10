@@ -19,10 +19,13 @@ This README reflects what currently works, and what is still planned.
 - [x] Login endpoint returns a JWT (`POST /api/auth/login`)
 - [x] JWT validation filter — protected endpoints require a valid token
 - [x] Role-based access (admin-only endpoints)
-- [ ] Cart entity + add/update/remove items
-- [ ] Order entity + checkout flow
+- [x] Cart entity + add/update/remove items
+- [x] Order entity + checkout flow
 - [ ] React frontend
 - [ ] Auto-seeded sample data on startup
+- [ ] Response DTOs (currently returning entities directly — password field
+  is hidden via @JsonIgnore, but this should be replaced with proper
+  DTOs eventually)
 
 ## How to run it (backend only, for now)
 
